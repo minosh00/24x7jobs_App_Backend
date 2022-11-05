@@ -6,7 +6,7 @@ const jobVacancySchema = mongoose.Schema({
     jobTitle:{type:String , required:true},
     jobDescription:{type:String , required:true},
     jobPeriod:{type:String , required:true},
-    JobImages:{type:String , required:true},
+    JobImages:{type:String , required:true, default: "no-image"},
     CompanyName:{type:String , required:true},
 
 },{
