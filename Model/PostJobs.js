@@ -16,5 +16,3 @@ const jobVacancySchema = mongoose.Schema({
 const jobVacancymodel = mongoose.model('jobVacancy' , jobVacancySchema)
 
 module.exports = jobVacancymodel
-
-

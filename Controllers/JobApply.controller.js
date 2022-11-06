@@ -26,8 +26,9 @@ const GetOneApplication = async (req, res) => {
 
 
 const GetAllApplication = async (req, res) => {
+    const { userId } = req.query;
     try {
-        const Supervisors = await JobApply.find();
+        const Supervisors = await JobApply.find(userId? { creator: userId }: {});
 
         res.status(200).json(Supervisors);
     } catch (error) {
@@ -64,14 +65,14 @@ const deleteApplication = async (req, res) => {
 
 
 
-const UpdateApplyJob= async (req, res) => {
+const UpdateApplyJob = async (req, res) => {
 
     const { id } = req.params;
     const { ApplyID, FullName, Email, cv, status } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No  with id: ${id}`);
 
-    const updatedSupervisor = { ApplyID, FullName, Email, cv, status,_id: id };
+    const updatedSupervisor = { ApplyID, FullName, Email, cv, status, _id: id };
 
     await JobApply.findByIdAndUpdate(id, updatedSupervisor, { new: true });
 
@@ -83,10 +84,12 @@ const UpdateApplyJob= async (req, res) => {
 const ApplyJob = async (req, res) => {
 
     const jobpost = req.body;
-  
-    console.log("creator ", jobpost.userId);
 
-    const newApplication = new JobApply({ ...jobpost,  creator: jobpost.userId == undefined ? "no creator" : jobpost.userId })
+
+    console.log("creator ", jobpost.userId);
+    console.log("creator ", jobpost.JobID);
+
+    const newApplication = new JobApply({ ...jobpost, creator: jobpost.userId == undefined ? "no creator" : jobpost.userId })
     console.log("applied job ", newApplication);
     try {
         await newApplication.save();
@@ -97,7 +100,7 @@ const ApplyJob = async (req, res) => {
     }
 }
 
-module.exports = {  ApplyJob, UpdateApplyJob,deleteApplication,GetoneJobsApplication,GetAllApplication,GetOneApplication,GetidApplication};
+module.exports = { ApplyJob, UpdateApplyJob, deleteApplication, GetoneJobsApplication, GetAllApplication, GetOneApplication, GetidApplication };
 
 
 

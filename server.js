@@ -6,10 +6,14 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 
-const user = require("./Routes/user.Routes");
+
+
+
+const userss = require("./Routes/user.Routes");
 const JobPost = require("./Routes/JobPost.routes");
 const JobApply = require("./Routes/JobApply.routes");
-
+const TrainingProgram = require("./Routes/TrainingProgram.routes");
+const TrainingApplied = require("./Routes/TranningApplied.routes");
 
 dotenv.config();
 
@@ -32,10 +36,14 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+
 //use Routes
-app.use("/user", user);
+app.use("/userss", userss);
 app.use("/jobVacancy", JobPost);
 app.use("/JobApply", JobApply);
+app.use("/TrainingProgram", TrainingProgram);
+app.use("/TrainingApplied", TrainingApplied);
 
 
 //DB connection

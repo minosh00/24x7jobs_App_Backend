@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../Middleware/auth");
 const { check } = require("express-validator");
-const {getUsers,getUser ,deleteUser , createUser , updateUser , registerUser ,authUser , loginUser} = require("../Controllers/userController");
+const {getUsers,getUser ,deleteUser , createUser , updateUser , registerUser ,authUser , loginUser} = require("../Controllers/users.jobs.Controller");
 
 
 var jwtSecret = "mysecrettoken";

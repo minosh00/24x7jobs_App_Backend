@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
-const User = require('../Model/user');
+const User = require('../Model/user.model');
 
 var jwtSecret = "mysecrettoken";
 

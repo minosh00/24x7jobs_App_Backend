@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 
-const jobVacancySchema = mongoose.Schema({
+const TrainingSchema = mongoose.Schema({
 
-    JobID:{type:String, required:true},
-    jobTitle:{type:String , required:true},
-    jobDescription:{type:String , required:true},
-    jobPeriod:{type:String , required:true},
-    JobImages:{type:String , required:true},
-    CompanyName:{type:String , required:true},
+    TrainingID:{type:String, required:true},
+    TrainingTitle:{type:String , required:true},
+    Description:{type:String , required:true},
+    TrainingPeriod:{type:String , required:true},
+    TrainingImages:{type:String , required:true},
+    TrainingOrganizer:{type:String , required:true},
+    certificate:{type:String, default:null },
 
 },{
     timestamps:true,
 }) 
 
-const jobVacancymodel = mongoose.model('jobVacancy' , jobVacancySchema)
+const TrainingModel = mongoose.model('Training' , TrainingSchema)
 
-module.exports = jobVacancymodel
+module.exports = TrainingModel
 
 
